@@ -2,13 +2,15 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #0a0a08;
-  --surface: #111110;
-  --border: rgba(255,255,255,0.07);
-  --text: #e8e4d9;
-  --muted: #7a766d;
-  --accent: #c8b560;
-  --accent2: #e07a3f;
+  --bg: #0d0a14;
+  --surface: #13101f;
+  --border: rgba(180,140,255,0.08);
+  --text: #ede8f5;
+  --muted: #8b7fa8;
+  --accent: #c9a84c;      /* Emas */
+  --accent2: #9b6dff;     /* Ungu */
+  --accent3: #e0c97a;     /* Emas terang */
+  --glow: rgba(155,109,255,0.15);
   --font-display: 'Playfair Display', Georgia, serif;
   --font-mono: 'DM Mono', monospace;
   --font-body: 'DM Sans', sans-serif;
@@ -320,3 +322,4 @@ section { padding: 7rem var(--pad); max-width: var(--max-w); margin: 0 auto; }
   .hero-title { font-size: clamp(2.8rem, 12vw, 4.5rem); }
   .about-stats { gap: 1.5rem; }
 }
+
