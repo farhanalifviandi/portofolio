@@ -128,8 +128,53 @@
   </footer>
 
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+  <canvas id="stars"></canvas>
+<style>
+  #stars {
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none; opacity: 0.5;
+  }
+  .hero { position: relative; z-index: 1; }
+</style>
+<script>
+  const c = document.getElementById('stars');
+  const ctx = c.getContext('2d');
+  let stars = [];
+  function resize() {
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
+  }
+  function init() {
+    stars = Array.from({length: 120}, () => ({
+      x: Math.random() * c.width,
+      y: Math.random() * c.height,
+      r: Math.random() * 1.2 + 0.2,
+      a: Math.random(),
+      speed: Math.random() * 0.005 + 0.002,
+      gold: Math.random() > 0.7
+    }));
+  }
+  function draw() {
+    ctx.clearRect(0, 0, c.width, c.height);
+    stars.forEach(s => {
+      s.a += s.speed;
+      const alpha = (Math.sin(s.a) + 1) / 2;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = s.gold
+        ? `rgba(201,168,76,${alpha * 0.8})`
+        : `rgba(180,150,255,${alpha * 0.6})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  resize(); init(); draw();
+  window.addEventListener('resize', () => { resize(); init(); });
+</script>
 </body>
 </html>
+
 
 
 
