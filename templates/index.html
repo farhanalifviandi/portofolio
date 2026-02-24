@@ -46,13 +46,20 @@
   <section class="about" id="about">
     <div class="section-label">01 / Tentang Saya</div>
     <div class="about-grid">
-      <div class="about-img-wrap"> 
-        <img 
-          src="{{ url_for('static', filename='images/PRD04682.JPG') }}" 
-          alt="Foto Profil"
+      <!-- FOTO PROFIL -->
+      <div class="about-img-wrap reveal">
+        <img
+          src="{{ url_for('static', filename='images/' ~ profile.photo) }}"
+          alt="Foto {{ profile.name }}"
           class="about-photo"
-        />
+          onerror="this.src='';this.parentElement.classList.add('no-photo')"
+        >
+        <div class="about-photo-fallback">
+          <span>📸</span>
+          <small>Tambahkan foto ke<br>static/images/{{ profile.photo }}</small>
+        </div>
       </div>
+      
       <div class="about-text">
         <h2 class="section-title">Seorang developer<br><em>yang peduli detail.</em></h2>
         <p>Dengan pengalaman lebih dari 3 tahun membangun aplikasi web dan mobile, saya fokus menciptakan solusi yang tidak hanya bekerja — tetapi <strong>bekerja dengan indah</strong>.</p>
@@ -174,6 +181,7 @@
 </script>
 </body>
 </html>
+
 
 
 
