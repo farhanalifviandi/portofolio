@@ -20,12 +20,7 @@
 
 html { scroll-behavior: smooth; }
 body {
-  font-family: var(--font-body);
-  background: var(--bg);
-  color: var(--text);
-  font-size: 1rem;
-  line-height: 1.7;
-  overflow-x: hidden;
+  background: radial-gradient(ellipse at 20% 0%, #1a0f2e 0%, #0d0a14 50%, #0a0d1a 100%);
 }
 
 /* Noise overlay */
@@ -322,4 +317,5 @@ section { padding: 7rem var(--pad); max-width: var(--max-w); margin: 0 auto; }
   .hero-title { font-size: clamp(2.8rem, 12vw, 4.5rem); }
   .about-stats { gap: 1.5rem; }
 }
+
 
