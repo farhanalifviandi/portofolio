@@ -46,11 +46,12 @@
   <section class="about" id="about">
     <div class="section-label">01 / Tentang Saya</div>
     <div class="about-grid">
-      <div class="about-img-wrap">
-        <div class="about-img-placeholder">
-          <span>📸</span>
-          <small>Ganti dengan foto kamu</small>
-        </div>
+      <div class="about-img-wrap"> 
+        <img 
+          src="{{ url_for('static', filename='images/PRD04682.JPG') }}" 
+          alt="Foto Profil"
+          class="about-photo"
+        />
       </div>
       <div class="about-text">
         <h2 class="section-title">Seorang developer<br><em>yang peduli detail.</em></h2>
@@ -129,5 +130,6 @@
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
+
 
 
