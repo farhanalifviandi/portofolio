@@ -51,7 +51,7 @@
       <!-- FOTO PROFIL -->
       <div class="about-img-wrap reveal">
         <img
-          src="{{ url_for('static', filename='images/PRD04682.JPG' ~ profile.photo) }}"
+          src="{{ url_for('static', filename='images/' ~ profile.photo) }}"
           alt="Foto {{ profile.name }}"
           class="about-photo"
           onerror="this.parentElement.classList.add('no-photo')"
@@ -182,4 +182,5 @@
   </script>
 </body>
 </html>
+
 
