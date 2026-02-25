@@ -10,6 +10,7 @@
 </head>
 <body>
   <div class="noise"></div>
+  <canvas id="stars"></canvas>
 
   <!-- NAV -->
   <nav class="nav">
@@ -46,20 +47,21 @@
   <section class="about" id="about">
     <div class="section-label">01 / Tentang Saya</div>
     <div class="about-grid">
+
       <!-- FOTO PROFIL -->
       <div class="about-img-wrap reveal">
         <img
           src="{{ url_for('static', filename='images/' ~ profile.photo) }}"
           alt="Foto {{ profile.name }}"
           class="about-photo"
-          onerror="this.src='';this.parentElement.classList.add('no-photo')"
+          onerror="this.parentElement.classList.add('no-photo')"
         >
         <div class="about-photo-fallback">
           <span>📸</span>
           <small>Tambahkan foto ke<br>static/images/{{ profile.photo }}</small>
         </div>
       </div>
-      
+
       <div class="about-text">
         <h2 class="section-title">Seorang developer<br><em>yang peduli detail.</em></h2>
         <p>Dengan pengalaman lebih dari 3 tahun membangun aplikasi web dan mobile, saya fokus menciptakan solusi yang tidak hanya bekerja — tetapi <strong>bekerja dengan indah</strong>.</p>
@@ -120,7 +122,7 @@
     <div class="contact-inner">
       <h2 class="section-title">Mari Berkolaborasi<em>.</em></h2>
       <p class="contact-sub">Punya proyek menarik? Saya siap mendengar.</p>
-      <a href="mailto:kamu@email.com" class="contact-email">farhanalifviandi60@email.com</a>
+      <a href="mailto:farhanalifviandi60@gmail.com" class="contact-email">farhanalifviandi60@gmail.com</a>
       <div class="contact-socials">
         <a href="https://github.com/farhanalifviandi" target="_blank">GitHub</a>
         <a href="https://linkedin.com/in/farhan-alifviandi" target="_blank">LinkedIn</a>
@@ -136,53 +138,47 @@
 
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
-  <canvas id="stars"></canvas>
-<style>
-  #stars {
-    position: fixed; inset: 0; z-index: 0;
-    pointer-events: none; opacity: 0.5;
-  }
-  .hero { position: relative; z-index: 1; }
-</style>
-<script>
-  const c = document.getElementById('stars');
-  const ctx = c.getContext('2d');
-  let stars = [];
-  function resize() {
-    c.width = window.innerWidth;
-    c.height = window.innerHeight;
-  }
-  function init() {
-    stars = Array.from({length: 120}, () => ({
-      x: Math.random() * c.width,
-      y: Math.random() * c.height,
-      r: Math.random() * 1.2 + 0.2,
-      a: Math.random(),
-      speed: Math.random() * 0.005 + 0.002,
-      gold: Math.random() > 0.7
-    }));
-  }
-  function draw() {
-    ctx.clearRect(0, 0, c.width, c.height);
-    stars.forEach(s => {
-      s.a += s.speed;
-      const alpha = (Math.sin(s.a) + 1) / 2;
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = s.gold
-        ? `rgba(201,168,76,${alpha * 0.8})`
-        : `rgba(180,150,255,${alpha * 0.6})`;
-      ctx.fill();
-    });
-    requestAnimationFrame(draw);
-  }
-  resize(); init(); draw();
-  window.addEventListener('resize', () => { resize(); init(); });
-</script>
+  <!-- BINTANG ANIMASI -->
+  <style>
+    #stars {
+      position: fixed; inset: 0; z-index: 0;
+      pointer-events: none; opacity: 0.5;
+    }
+  </style>
+  <script>
+    const c = document.getElementById('stars');
+    const ctx = c.getContext('2d');
+    let stars = [];
+    function resize() {
+      c.width = window.innerWidth;
+      c.height = window.innerHeight;
+    }
+    function init() {
+      stars = Array.from({length: 120}, () => ({
+        x: Math.random() * c.width,
+        y: Math.random() * c.height,
+        r: Math.random() * 1.2 + 0.2,
+        a: Math.random(),
+        speed: Math.random() * 0.005 + 0.002,
+        gold: Math.random() > 0.7
+      }));
+    }
+    function draw() {
+      ctx.clearRect(0, 0, c.width, c.height);
+      stars.forEach(s => {
+        s.a += s.speed;
+        const alpha = (Math.sin(s.a) + 1) / 2;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = s.gold
+          ? `rgba(201,168,76,${alpha * 0.8})`
+          : `rgba(180,150,255,${alpha * 0.6})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+    resize(); init(); draw();
+    window.addEventListener('resize', () => { resize(); init(); });
+  </script>
 </body>
 </html>
-
-
-
-
-
