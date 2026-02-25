@@ -21,7 +21,7 @@ PROFILE = {
     "github": "https://github.com/farhanalifviandi",
     "linkedin": "https://linkedin.com/in/farhan-alifviandi",
     "instagram": "https://instagram.com/farhan_alifviandi",
-    "photo": "PAP.JPG",
+    "photo": "PRD04682.JPG",
 }
 
 PROJECTS = [
@@ -76,3 +76,4 @@ def projects():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
